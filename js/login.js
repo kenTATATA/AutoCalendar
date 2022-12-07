@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
+// import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
 import {
   getAuth,
   onAuthStateChanged,
@@ -52,7 +52,7 @@ if (submitButton != null) {
         const errorCode = error.code;
         const errorMessage = error.message;
         // The email of the user's account used.
-        const email = error.customData.email;
+        // const email = error.customData.email;
         // The AuthCredential type that was used.
         const credential = GoogleAuthProvider.credentialFromError(error);
         // ...
@@ -62,7 +62,7 @@ if (submitButton != null) {
 
 if (submitButton != null) {
   submitButton.addEventListener("click", function () {
-    signOut(auth)
+    signIn(auth)
       .then(() => {
         console.log("bye");
       })
@@ -79,8 +79,8 @@ onAuthStateChanged(auth, (user) => {
     // const uid = user.uid;
     console.log(user.uid);
     console.log(getAuth().currentUser.displayName);
-    nameSpace.innerText = getAuth().currentUser.displayName;
+    document.location.href = "index.html";
   } else {
-    document.location.href = "main.html";
+    // document.location.href = "index.html";
   }
 });
