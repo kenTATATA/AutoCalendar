@@ -1,0 +1,29 @@
+.body {
+    margin: 40px 10px;
+    padding: 0;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+#calendar {
+    max-width: 1500px;
+    margin: 5% 10%;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 4;
+}
+
+.sidebar {
+    background-color: moccasin;
+    box-sizing: border-box;
+    border: 8px solid chocolate;
+    flex-grow: 1;
+}

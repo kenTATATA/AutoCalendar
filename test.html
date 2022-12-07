@@ -3,6 +3,7 @@
 
 <head>
     <meta charset='utf-8' />
+    <link href="test.css" rel="stylesheet" />
     <link href='./lib/main.css' rel='stylesheet' />
     <script src='./lib/main.js'></script>
     <script>
@@ -85,56 +86,49 @@
         });
 
     </script>
-    <style>
-        body {
-            margin: 40px 10px;
-            padding: 0;
-            font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-            font-size: 14px;
-        }
-
-        #calendar {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-    </style>
 </head>
 
 <body>
+    <div class="main">
+        <div class="content">
+            <div id='calendar'></div>
+            <div id='add'>
+                予定の追加<br>
+                タイトル
+                <input id="Plan_title" type="text"></input><br>
+                開始日時
+                <input id="Plan_startdate" type="date"></input>
+                <input id="Plan_starttime" type="time" step="900"></input>
+                <br>
+                終了日時
+                <input id="Plan_enddate" type="date"></input>
+                <input id="Plan_endtime" type="time" step="900"></input>
+                <br>
+                <button id="Plan_add"> 追加 </button><br><br>
+                ToDoの追加<br>
+                タイトル
+                <input id="Todo_title" type="text"></input><br>
+                締め切り
+                <input id="Todo_date" type="date"></input>
+                <input id="Todo_time" type="time" step="900"></input>
+                <br>
+                推定予定時間
+                <input id="Todo_len" type="time" step="900"></input>
+                <br>
+                優先度
+                <select id="Todo_priority">
+                    <option value="0"> 1 </option>
+                    <option value="1"> 2 </option>
+                    <option value="2" selected="selected"> 3 </option>
+                    <option value="3"> 4 </option>
+                    <option value="4"> 5 </option>
+                </select><br>
+                <button id="Todo_add"> 追加 </button>
+            </div>
+        </div>
+        <div class="sidebar">サイドバー</div>
+    </div>
 
-    <div id='calendar'></div>
-
-    予定の追加<br>
-    タイトル
-    <input id="Plan_title" type="text"></input><br>
-    開始日時
-    <input id="Plan_startdate" type="date"></input>
-    <input id="Plan_starttime" type="time" step="900"></input>
-    <br>
-    終了日時
-    <input id="Plan_enddate" type="date"></input>
-    <input id="Plan_endtime" type="time" step="900"></input>
-    <br>
-    <button id="Plan_add"> 追加 </button><br><br>
-    ToDoの追加<br>
-    タイトル
-    <input id="Todo_title" type="text"></input><br>
-    締め切り
-    <input id="Todo_date" type="date"></input>
-    <input id="Todo_time" type="time" step="900"></input>
-    <br>
-    推定予定時間
-    <input id="Todo_len" type="time" step="900"></input>
-    <br>
-    優先度
-    <select id="Todo_priority">
-        <option value="0"> 1 </option>
-        <option value="1"> 2 </option>
-        <option value="2" selected="selected"> 3 </option>
-        <option value="3"> 4 </option>
-        <option value="4"> 5 </option>
-    </select><br>
-    <button id="Todo_add"> 追加 </button>
 
     <script>
         let plan = {
