@@ -25,7 +25,7 @@ const auth = getAuth();
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    document.location.href = "after_login.html";
+    document.location.href = "constructor/index.html";
     // const uid = user.uid;
     // ...
   } else {
