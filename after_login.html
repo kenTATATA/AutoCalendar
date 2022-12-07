@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="main.css">
 
@@ -12,25 +14,11 @@
     <div class="login-container">
         <div id="main">
             <h2>Sign Out</h2>
-            <button id="logout">SignOut</button>
-            <div id="sms_div">
-                <form method="post" action="send_message.php">
-                    <input type="text" name="recievers_no" placeholder="Enter Reciever's No">
-                    <br>
-                    <textarea name="message" placeholder="Enter Message Text"></textarea>
-                    <br>
-                    <input type="submit" name="send_message" value="SEND MESSAGE">
-                </form>
-            </div>
-            <span id="data">
-                <!-- <div>dummy</div> -->
-            </span>
+            <button id="logout" onclick="location.href='main.html'">SignOut</button>
         </div>
 
     </div>
-    <script type="module" src="login.js"></script>
-    <script type="module" src="sendData.js"></script>
-
+    <script type="module" src="logout.js"></script>
 </body>
 
 </html>
