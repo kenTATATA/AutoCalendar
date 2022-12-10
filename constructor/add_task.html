@@ -11,16 +11,16 @@
 <body>
     <div class="side_bar">
         <div class="add_task">
-            <form action="#" method="post">
+            <form name="add_task__form" >
                 <h3>新規タスク作成</h3>
                 <div class="add_task--button"><a href="index.html">キャンセル</a></div>
                 <div class="add_task__item">
                     <p>タスク名</p>
-                    <input id="title" type="text" placeholder="入力してください"></input>
+                    <input name="title" type="text" placeholder="入力してください"></input>
                 </div>
                 <div class="add_task__item">
                     <p>締切日</p>
-                    <input id="deadline_date" type="date"></input>
+                    <input name="deadline_date" type="date"></input>
                     <select name="deadline_hour" id="deadline_hour">
                         <option value="00">00</option>
                         <option value="01">01</option>
@@ -203,17 +203,17 @@
                 </div>
                 <div class="add_task__item">
                     <p>実施予定日</p>
-                    <input type="checkbox" value="auto_scheduling" name="checkbox1" />自動でスケジューリングする
-                    <input type="checkbox" value="task_duplication" name="checkbox2" />タスクの重複を許す
-                    <input type="checkbox" value="all_day" name="checkbox3" />終日
+                    <input type="checkbox" value="auto_scheduling" name="auto_scheduling" />自動でスケジューリングする
+                    <input type="checkbox" value="task_duplication" name="task_duplication" />タスクの重複を許す
+                    <input type="checkbox" value="all_day" name="all_day" />終日
                     <br>
                     実施日数：
-                    <input id="number_of_imp_days" type="text" placeholder="入力してください"></input>
+                    <input name="number_of_imp_days" type="text" placeholder="入力してください"></input>
                     <br>
-                    <input id="imp_date" type="date"></input>
+                    <input name="imp_date" type="date"></input>
                     <br />
                     開始：
-                    <select id="imp_start_hour">
+                    <select name="imp_start_hour">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -238,7 +238,7 @@
                         <option value="22">22</option>
                         <option value="23">23</option>
                     </select>時
-                    <select id="imp_start_minute">
+                    <select name="imp_start_minute">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -301,7 +301,7 @@
                     </select>分
                     <br />
                     終了：
-                    <select id="imp_end_hour">
+                    <select name="imp_end_hour">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -326,7 +326,7 @@
                         <option value="22">22</option>
                         <option value="23">23</option>
                     </select>時
-                    <select id="imp_end_minute">
+                    <select name="imp_end_minute">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -390,24 +390,24 @@
                 </div>
                 <div class="add_task__item">
                     <p>概要</p>
-                    <textarea id="overview" placeholder="入力してください"></textarea>
+                    <textarea name="overview" placeholder="入力してください"></textarea>
                 </div>
 
                 <div class="add_task__item">
                     <p>カテゴリ</p>
-                    <input id="category" type="text" placeholder="入力してください"></input>
+                    <input name="category" type="text" placeholder="入力してください"></input>
                 </div>
 
                 <div class="add_task__item">
-                    <input type="checkbox" value="like" name="checkbox4" />お気に入り
+                    <input type="checkbox" value="favorite" name="favorite" />お気に入り
                 </div>
 
-                <input type="submit" value="追加" />
+                <button type="button" id="submit__btn">追加</button>
             </form>
         </div>
     </div>
 
-    </div>
+    <script src="../js/add_task.js"></script>
 
 </body>
 
