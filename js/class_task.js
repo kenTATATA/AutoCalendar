@@ -1,4 +1,4 @@
-export class Task {
+class Task {
     /**
      * @param {Number} id :Taskのid
      * @param {String} name :Task名

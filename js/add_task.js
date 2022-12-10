@@ -1,5 +1,3 @@
-import { Task } from 'class_task.js';
-
 var btn = document.getElementById('submit__btn');
 
 //追加ボタンが押されたときの処理
@@ -29,8 +27,8 @@ btn.addEventListener('click', function () {
 // 新しいタスクのデータをフォームから取得し、Taskクラスの形で返す関数
 function get_new_task() {
     const formElements = document.forms.add_task__form;
-    var new_task_array = {};
-    
+    var a = {};
+
     var input_array = formElements.getElementsByTagName("input");
     var select_array = formElements.getElementsByTagName("select");
     var textarea_array = formElements.getElementsByTagName("textarea");
@@ -39,28 +37,33 @@ function get_new_task() {
         item = input_array.item(i);
         if (item.type == "checkbox") {
             if (item.checked === true) {
-                new_task_array[item.name] = true;
+                a[item.name] = true;
             } else {
-                new_task_array[item.name] = false;
+                a[item.name] = false;
             }
         } else {
-            new_task_array[item.name] = item.value;
+            a[item.name] = item.value;
         }
 
     }
 
     for (let i = 0; i < select_array.length; i++) {
         item = select_array.item(i);
-        new_task_array[item.name] = item.value;
+        a[item.name] = item.value;
     }
 
     for (let i = 0; i < textarea_array.length; i++) {
         item = textarea_array.item(i);
-        new_task_array[item.name] = item.value;
+        a[item.name] = item.value;
     }
 
-    
+    //タスクのid未定！！！！！
+    var deadline_date = new Date(a["deadline_date"] + " " + a["deadline_hour"] + ":" + a["deadline_minute"]);
+    var time = new Number(a["len_hour"]) + new Number(a["len_minute"]) / 60;
+    var new_task = new Task(null, a["title"], deadline_date, time, a["auto_scheduling"], a["task_duplication"], a["all_day"], new Number(a["number_of_imp_days"]), a["overview"], a["category"], a["favorite"]);
 
+
+    console.log(a);
     return new_task;
 }
 
