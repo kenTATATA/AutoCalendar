@@ -59,8 +59,8 @@ function get_new_task() {
 
     //タスクのid未定！！！！！
     var deadline_date = new Date(a["deadline_date"] + " " + a["deadline_hour"] + ":" + a["deadline_minute"]);
-    var time = new Number(a["len_hour"]) + new Number(a["len_minute"]) / 60;
-    var new_task = new Task(null, a["title"], deadline_date, time, a["auto_scheduling"], a["task_duplication"], a["all_day"], new Number(a["number_of_imp_days"]), a["overview"], a["category"], a["favorite"]);
+    var required_time = new Number(a["len_hour"]) + new Number(a["len_minute"]) / 60;
+    var new_task = new Task(null, a["title"], deadline_date, required_time, a["auto_scheduling"], a["task_duplication"], a["all_day"], new Number(a["number_of_imp_days"]), a["overview"], a["category"], a["favorite"]);
 
 
     console.log(a);

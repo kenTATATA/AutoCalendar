@@ -3,20 +3,20 @@ class Task {
      * @param {Number} id :Taskのid
      * @param {String} name :Task名
      * @param {Date} deadline :Taskの締め切り
-     * @param {Number} time :Taskの所要時間(時間)
+     * @param {Number} required_time :Taskの所要時間(時間)
      * @param {Boolean} auto_scheduled :自動スケジューリングするか
      * @param {Boolean} duplicate :Taskの重複を許すか
      * @param {Boolean} all_day :Taskが終日かどうか
-     * @param {Number} days
-     * @param {String} overview
-     * @param {Stirng} category
-     * @param {Boolean} favorite
+     * @param {Number} days :何日間
+     * @param {String} overview :概要
+     * @param {Stirng} category :カテゴリー
+     * @param {Boolean} favorite :お気に入り
      */
-    constructor(id, name, deadline, time, auto_scheduled, duplicate, all_day, days, overview, category, favorite) {
+    constructor(id, name, deadline, required_time, auto_scheduled, duplicate, all_day, days, overview, category, favorite) {
         this.id = id;
         this.name = name;
-        this.deadline = deadline;
-        this.time = time;
+        this.deadline = deadline.getTime();
+        this.required_time = required_time*3600000;
         this.auto_scheduled = auto_scheduled;
         this.duplicate = duplicate;
         this.all_day = all_day;
@@ -24,7 +24,8 @@ class Task {
         this.overview = overview;
         this.category = category;
         this.favorite = favorite;
-        this.set_time = [deadline.getTime()-time*36000, deadline.getTime()];// start, endの時刻をECMAScript元期からの経過ミリ数で表す
+        var now = new Date();
+        this.specified_time = [now.getTime(), now.getTime() + this.required_time];  // start, endの時刻をECMAScript元期からの経過ミリ数で表す
     }
 
     get getId() {
@@ -39,8 +40,8 @@ class Task {
         return this.deadline;
     }
 
-    get getTime() {
-        return this.time;
+    get getRequiredTime() {
+        return this.required_time;
     }
 
     get isAutoScheduled() {
@@ -71,8 +72,12 @@ class Task {
         return this.favorite;
     }
 
-    get getSetTime() {
-        return this.set_time;
+    get getStartTime() {
+        return this.specified_time[0];
+    }
+
+    get getEndTime() {
+        return this.specified_time[1];
     }
 
     /**
@@ -94,15 +99,13 @@ class Task {
      */
     set setDeadline(deadline) {
         this.deadline = deadline;
-        this.set_time[0] = deadline;
     }
 
     /**
      * @param {Number} time
      */
-    set setTime(time) {
-        this.time = time;
-        this.set_time[1] = time;
+    set setRequiredTime(time) {
+        this.required_time = time;
     }
 
     /**
@@ -152,5 +155,27 @@ class Task {
      */
     set setFavorite(favorite) {
         this.favorite = favorite;
+    }
+
+    /**
+     *  @param {Number} start
+     */
+    set setStartTime(start) {
+        this.specified_time[0] = start;
+    }
+
+    /**
+     *  @param {Number} end
+     */
+    set setEndTime(end) {
+        this.specified_time[1] = end;
+    }
+
+    /**
+     * @param {Number} start
+     */
+    set setSpecifiedTime(start) {
+        this.setStartTime(start);
+        this.setEndTime(start + this.required_time);
     }
 }
