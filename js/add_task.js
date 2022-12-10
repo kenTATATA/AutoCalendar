@@ -1,3 +1,5 @@
+import { Task } from 'class_task.js';
+
 var btn = document.getElementById('submit__btn');
 
 //追加ボタンが押されたときの処理
@@ -24,11 +26,11 @@ btn.addEventListener('click', function () {
     console.log(new_task);
 })
 
-// 新しいタスクのデータをフォームから取得する関数
+// 新しいタスクのデータをフォームから取得し、Taskクラスの形で返す関数
 function get_new_task() {
     const formElements = document.forms.add_task__form;
-    var new_task = {};
-
+    var new_task_array = {};
+    
     var input_array = formElements.getElementsByTagName("input");
     var select_array = formElements.getElementsByTagName("select");
     var textarea_array = formElements.getElementsByTagName("textarea");
@@ -37,25 +39,27 @@ function get_new_task() {
         item = input_array.item(i);
         if (item.type == "checkbox") {
             if (item.checked === true) {
-                new_task[item.name] = true;
+                new_task_array[item.name] = true;
             } else {
-                new_task[item.name] = false;
+                new_task_array[item.name] = false;
             }
         } else {
-            new_task[item.name] = item.value;
+            new_task_array[item.name] = item.value;
         }
 
     }
 
     for (let i = 0; i < select_array.length; i++) {
         item = select_array.item(i);
-        new_task[item.name] = item.value;
+        new_task_array[item.name] = item.value;
     }
 
     for (let i = 0; i < textarea_array.length; i++) {
         item = textarea_array.item(i);
-        new_task[item.name] = item.value;
+        new_task_array[item.name] = item.value;
     }
+
+    
 
     return new_task;
 }
