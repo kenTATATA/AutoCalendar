@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dynamic Form</title>
+</head>
+
+<body>
+    <h1>Dynamic Form</h1>
+    <form id="dynamic-form">
+        <label>Enter the number of forms you want:</label>
+        <input type="number" id="form-count" min="1" value="1">
+        <button type="button" onclick="generateForm()">Generate Form</button>
+    </form>
+    <div id="form-container"></div>
+    <script type="text/javascript">
+
+        function generateForm() {
+            // Get the number of forms from the input
+            const formCount = document.getElementById('form-count').value;
+
+            // Clear the form container
+            document.getElementById('form-container').innerHTML = '';
+
+            // Generate the specified number of forms
+            for (let i = 0; i < formCount; i++) {
+                const form = document.createElement('form');
+                form.innerHTML = `
+            <label>Form #${i + 1}</label>
+            <input type="text" placeholder="Enter your name">
+            <input type="email" placeholder="Enter your email">
+            <input type="submit" value="Submit">
+        `;
+                document.getElementById('form-container').appendChild(form);
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

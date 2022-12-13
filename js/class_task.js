@@ -16,7 +16,7 @@ class Task {
         this.id = id;
         this.name = name;
         this.deadline = deadline.getTime();
-        this.required_time = required_time*3600000;
+        this.required_time = required_time * 3600000;
         this.auto_scheduled = auto_scheduled;
         this.duplicate = duplicate;
         this.all_day = all_day;
@@ -67,7 +67,7 @@ class Task {
     get getCategory() {
         return this.category;
     }
-    
+
     get isFavorite() {
         return this.favorite;
     }
@@ -86,7 +86,7 @@ class Task {
     set setId(id) {
         this.id = id;
     }
-    
+
     /**
      * @param {String} name
      */
