@@ -296,10 +296,16 @@ const db = getFirestore(app);
 //ここのtestuidのところにuserのuidを入れる
 const userRef = doc(db, "userData", "testuid123412341234");
 const docsnap = await getDoc(userRef);
-console.log(docsnap.data());
 
 const test_add_btn = document.getElementById("test_add");
 
+document.getElementById("time").innerHTML = docsnap.data().予定;
+document.getElementById("schedule").innerHTML = docsnap.data().時間;
+
 test_add_btn.addEventListener("click", function () {
   console.log("hi");
+  console.log(docsnap.data());
+  setDoc(doc(db, "userData", "testuid13412451"), {
+    name: "kang",
+  });
 });
