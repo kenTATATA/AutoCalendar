@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8" />
     <title>AutoCalender</title>
 </head>
+
 <body>
-    <div id = "container"></div>
+    <div id="container"></div>
     予定
     &nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -17,15 +19,15 @@
     &nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&thinsp;
     予定
-    <br/>
-    <input type="text" id="addText" />  <!-- 追加する予定 -->
+    <br />
+    <input type="text" id="addText" /> <!-- 追加する予定 -->
     &nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;
-    <input type="text" id="removeText" />  <!-- 削除する予定 -->
-    <br/>
-    <br/>
+    <input type="text" id="removeText" /> <!-- 削除する予定 -->
+    <br />
+    <br />
     期限
     &nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -36,34 +38,34 @@
     &nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&thinsp;&thinsp;&thinsp;
-    <button id = "removeButton"> 削除 </button>
-    <br/>
-    <select id = "deadDaySelect"> <!-- 追加する予定の締切日 -->
-        <option value = "0"> 今日 </option>
-        <option value = "1"> 明日 </option>
-        <option value = "2"> 明後日 </option>
-        <option value = "3"> 3日後 </option>
-        <option value = "4"> 4日後 </option>
+    <button id="removeButton"> 削除 </button>
+    <br />
+    <select id="deadDaySelect"> <!-- 追加する予定の締切日 -->
+        <option value="0"> 今日 </option>
+        <option value="1"> 明日 </option>
+        <option value="2"> 明後日 </option>
+        <option value="3"> 3日後 </option>
+        <option value="4"> 4日後 </option>
     </select>
-    <select id = "deadTimeSelect"> <!-- 追加する予定の締め切り時間 -->
-        <option value = "0"> 正午まで </option>
-        <option value = "1"> 終わりまで </option>
+    <select id="deadTimeSelect"> <!-- 追加する予定の締め切り時間 -->
+        <option value="0"> 正午まで </option>
+        <option value="1"> 終わりまで </option>
     </select>
-    <br/>
+    <br />
     優先度
-    <br/>
-    <select id = "prioritySelect"> <!-- 追加する予定の優先度 -->
-        <option value = "0"> 1 </option>
-        <option value = "1"> 2 </option>
-        <option value = "2" selected = "selected"> 3 </option>
-        <option value = "3"> 4 </option>
-        <option value = "4"> 5 </option>
-    </select> 
-    <br/>
-    <br/>
-    <button id = "addButton"> 追加 </button>
-    <br/>
-    <br/>
+    <br />
+    <select id="prioritySelect"> <!-- 追加する予定の優先度 -->
+        <option value="0"> 1 </option>
+        <option value="1"> 2 </option>
+        <option value="2" selected="selected"> 3 </option>
+        <option value="3"> 4 </option>
+        <option value="4"> 5 </option>
+    </select>
+    <br />
+    <br />
+    <button id="addButton"> 追加 </button>
+    <br />
+    <br />
 </body>
 <script>
     var cvs = document.createElement("canvas");
@@ -107,7 +109,7 @@
 
     render();
 
-    addButton.addEventListener("click", function(e) {
+    addButton.addEventListener("click", function (e) {
         if (addText.value == "") {  // (一文字も入っていない場合) 
             alert("追加する予定を入力してください");
         }
@@ -126,7 +128,7 @@
             var index_time = deadTimeSelect.selectedIndex;
             var selectedOption_time = options_time[index_time];
             var deadTime = parseInt(selectedOption_time.value);  // 0 or 1
-            
+
             // 優先度を考慮した予定の挿入
             var unit = new Unit(addText.value, priority);
             var schedulesIndex = deadDay * 2 + deadTime;
@@ -146,13 +148,13 @@
                         if (i == oneSchedule.length - 1) {
                             oneSchedule.push(unit);  // 末尾に追加
                         }
-                    } 
+                    }
                     if (sliceDone) {  // 一回挿入したらループを抜ける
                         break;
                     }
                 }
             }
-            
+
             schedules[schedulesIndex] = oneSchedule;  // 置き換え
 
             // 予定が表示できない量だけ存在していたら、配置換えをする.
@@ -181,7 +183,7 @@
         }
     });
 
-    removeButton.addEventListener("click", function(e) {
+    removeButton.addEventListener("click", function (e) {
         // (この方法だと, 時間をまたいで予定を詰めることができない...)
         var removeLabel = removeText.value;
         var removeDone = false;  // 削除が終わったかどうかの判断
@@ -257,7 +259,7 @@
             ctx.fillText("午後", 100 * i, 250);
         }
 
-        
+
         for (var i = 0; i < 5; i++) {
             for (var j = 0; j < scheduleLimitNum; j++) {
                 ctx.fillText((j + 1) + ".", 100 * i, 100 + 70 * j);
@@ -276,4 +278,5 @@
     }
 
 </script>
+
 </html>

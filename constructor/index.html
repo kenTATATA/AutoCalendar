@@ -16,7 +16,7 @@
                 <li class="menu_bar__item">
                     <div class="menu_bar__item--title">Settings</div>
                     <ul>
-                        <li><a href="regular_schedule.html">定例スケジュール設定</a></li>
+                        <li><a href="#">定例スケジュール設定</a></li>
                         <li><a href="#">自動スケジューリングの設定</a></li>
                         <li><a href="#">授業の読み込み</a></li>
                     </ul>
@@ -36,7 +36,6 @@
                     <div class="user_logout">
                         <ul>
                             <li><a href="login.html">ログアウト</a></li>
-                            <button id="logout">Sign out</button>
                         </ul>
                     </div>
                 </li>
@@ -52,11 +51,7 @@
 
             <div class="task_list">
                 <h3>タスク一覧</h3>
-                <div class="task_list__item">
-                    <input type="checkbox" value="auto_scheduling" name="checkbox4" /><a href="detail.html">デザイン作成</a>
-                    <p>予定日：2022.11.12 12:00~18:00</p>
-                    <p>締切日：2022.11.20 12:00</p>
-                </div>
+                <div id="task_list_container"></div>
             </div>
 
             <hr>
@@ -70,12 +65,13 @@
                 </div>
             </div>
         </div>
-
     </div>
-    <button id="test_add"> testAdd </button>
 
+    <script type="text/javascript" src="../js/class_Settings.js"></script>
+    <script type="text/javascript" src="../js/class_Task.js"></script>
+    <script type="text/javascript" src="../js/class_User.js"></script>
+    <script type="text/javascript" src="../js/class_Schedule.js"></script>
+    <script type="text/javascript" src="../js/index.js"></script>
 </body>
-<script type="module" src="../js/logout.js"></script>
-<script type="module" src="../js/getData.js"></script>
 
 </html>
