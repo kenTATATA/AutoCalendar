@@ -3,6 +3,7 @@ import {
   doc,
   collection,
   getDocs,
+  setDoc,
   getDoc,
   getFirestore,
 } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
@@ -45,19 +46,31 @@ export const task1 = new Task(
   data[5],
   data[6],
   data[7],
-  new Date(data[8].seconds * 1000),
+  data[8].seconds * 1000,
   data[9],
   data[10],
   data[11],
-  [
-    [
-      new Date(2022, 11, 14, 5, 25).getTime(),
-      new Date(2022, 11, 14, 6, 0).getTime(),
-    ],
-  ]
+  [[data[12].seconds * 1000, data[13].seconds * 1000]]
 );
 console.log(task1);
 
-//   setDoc(doc(db, "userData", "testuid13412451"), {
-//     name: "kang",
-//   });
+test_add_btn.addEventListener("click", () => {
+  setDoc(doc(db, "userData", "testuid13412451"), {
+    testtask: [
+      data[0],
+      data[1],
+      data[2],
+      data[3],
+      data[4],
+      data[5],
+      data[6],
+      data[7],
+      data[8].seconds * 1000,
+      data[9],
+      data[10],
+      data[11],
+      data[12].seconds * 1000,
+      data[13].seconds * 1000,
+    ],
+  });
+});

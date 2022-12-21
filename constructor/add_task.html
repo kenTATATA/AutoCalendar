@@ -203,9 +203,9 @@
                 </div>
                 <div class="add_task__item">
                     <p>実施予定日</p>
-                    <input type="checkbox" value="auto_scheduling" name="checkbox1" />自動でスケジューリングする
-                    <input type="checkbox" value="task_duplication" name="checkbox2" />タスクの重複を許す
-                    <input type="checkbox" value="all_day" name="checkbox3" />終日
+                    <input id="auto_scheduling" type="checkbox" value="auto_scheduling" name="checkbox1" />自動でスケジューリングする
+                    <input id="task_duplication" type="checkbox" value="task_duplication" name="checkbox2" />タスクの重複を許す
+                    <input id="all_day" type="checkbox" value="all_day" name="checkbox3" />終日
                     <br>
                     実施日数：
                     <input id="number_of_imp_days" type="text" placeholder="入力してください"></input>
@@ -399,16 +399,17 @@
                 </div>
 
                 <div class="add_task__item">
-                    <input type="checkbox" value="like" name="checkbox4" />お気に入り
+                    <input id="like" type="checkbox" name="checkbox4" />お気に入り
                 </div>
 
                 <input type="submit" value="追加" />
             </form>
         </div>
     </div>
-
+    <button id="add_btn">testadd</button>
     </div>
 
 </body>
+<script type="module" src="../js/sendData.js"></script>
 
 </html>
