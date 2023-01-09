@@ -276,7 +276,7 @@ export class Schedule {
                 }
             }
             else {
-                task_copy.OneArrayToTwoArray();
+                task_copy.specified_time = [task_copy.specified_time];
             }
             all_tasks.push(task_copy);
         }
@@ -297,7 +297,7 @@ export class Schedule {
                 }
             }
             else {
-                task_copy.OneArrayToTwoArray();
+                task_copy.specified_time = [task_copy.specified_time];
             }
             all_tasks.push(task_copy);
         }
@@ -318,7 +318,7 @@ export class Schedule {
                 }
             }
             else {
-                task_copy.OneArrayToTwoArray();
+                task_copy.specified_time = [task_copy.specified_time];
             }
             all_tasks.push(task_copy);
         }
