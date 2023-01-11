@@ -84,40 +84,39 @@ if (edit_page == true) {
 //main関数
 //確定ボタンが押されたときの処理
 document.getElementById("submit__btn").addEventListener("click", function () {
-  //新しいタスクのデータをフォームから取得し、Taskクラスに変換
-  var new_task = get_new_task();
-  console.log(new_task);
-  //タスクの入力内容の妥当性を判断
-  if (form_check(new_task) == false) {
-    console.log("フォームエラー");
-    return;
-  }
-  //Scheduleクラスに格納
-  user.schedule.addTask(new_task);
-
-  //all_tasksをaddTaskする
-  all_tasks.forEach((e) => {
-    if (edit_page == true) {
-      if (selected_task) {
-        if (e.id != selected_task.id) {
-          user.schedule.addTask(e);
+    //all_tasksをaddTaskする
+    all_tasks.forEach((e) => {
+        if (edit_page == true) {
+            if (selected_task) {
+                if (e.id != selected_task.id) {
+                    user.schedule.addTask(e);
+                }
+            }
+        } else {
+            user.schedule.addTask(e);
         }
-      }
-    } else {
-      user.schedule.addTask(e);
+    });
+    //新しいタスクのデータをフォームから取得し、Taskクラスに変換
+    var new_task = get_new_task();
+    console.log(new_task);
+    //タスクの入力内容の妥当性を判断
+    if (form_check(new_task) == false) {
+        console.log("フォームエラー");
+        return;
     }
-  });
+    //Scheduleクラスに格納
+    user.schedule.addTask(new_task);
 
-  //(KIM)Scheduleクラスのall_tasksのタスクをデータベースに格納
-  let updated_tasks = user.schedule.returnAllTasks();
-  console.log("update_task", updated_tasks);
-  firebase_send(updated_tasks, edit_page);
-  // 同期処理がダメだ
-  // if(edit_page==true){
-  //     window.location.href = '../constructor/detail.html';
-  // }else{
-  //     window.location.href = '../constructor/index.html';
-  // }
+    //(KIM)Scheduleクラスのall_tasksのタスクをデータベースに格納
+    let updated_tasks = user.schedule.returnAllTasks();
+    console.log("update_task", updated_tasks);
+     firebase_send(updated_tasks, edit_page);
+    // 同期処理がダメだ
+    // if(edit_page==true){
+    //     window.location.href = '../constructor/detail.html';
+    // }else{
+    //     window.location.href = '../constructor/index.html';
+    // }
 });
 
 //フォームチェック：入力内容に問題があればfalseを出力、メッセージを表示
@@ -579,30 +578,30 @@ function get_new_task() {
     task_id = uuidv4();
   }
 
-  const new_task = new Task(
-    task_id,
-    a["title"],
-    a["category"],
-    a["overview"],
-    a["favorite"],
-    a["plan_or_task"],
-    false,
-    a["task_duplication"],
-    deadline_date,
-    required_time,
-    Number(a["number_of_imp_days"]),
-    a["auto_scheduling"],
-    new_specified_time,
-    a["unit_time"],
-    null,
-    Number(a["importance"]),
-    a["place"],
-    a["color"],
-    true
-  );
+    const new_task = new Task(
+        task_id,
+        a["title"],
+        a["category"],
+        a["overview"],
+        a["favorite"],
+        a["plan_or_task"],
+        false,
+        a["task_duplication"],
+        deadline_date,
+        required_time,
+        Number(a["number_of_imp_days"]),
+        a["auto_scheduling"],
+        new_specified_time,
+        Number(a["unit_time"])/60,
+        null,
+        Number(a["importance"]),
+        a["place"],
+        a["color"],
+        true
+    );
 
-  console.log(a);
-  return new_task;
+    console.log(a);
+    return new_task;
 }
 
 //キャンセルボタン

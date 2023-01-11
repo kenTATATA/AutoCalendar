@@ -21,3 +21,7 @@
 ・required_time
 ・unit_time
 ・plan_or_task
+
+---promise---
+・detailsの166
+・add_taskの111

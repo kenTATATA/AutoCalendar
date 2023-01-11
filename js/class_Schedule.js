@@ -207,7 +207,8 @@ export class Schedule {
                         // 元からある予定の間にすっぽり埋もれていないか?
                         //throw new Error("この予定は追加できません。");
                         //石井追加
-                        console.log("「"+this.name+"」は追加出来ませんでした。");
+                        console.log("「"+task.name+"」は追加出来ませんでした。");
+                        return;
                     }
                 }
                 // 重複していないので入れる

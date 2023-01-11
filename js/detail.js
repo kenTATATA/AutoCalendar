@@ -75,7 +75,7 @@ if (selected_task) {
   let unit_time = "";
   if (selected_task.auto_scheduled == true) {
     importance = "重要度：" + selected_task.importance;
-    unit_time = "<br>分割する時間の単位:" + (selected_task.unit_time / (1000 * 60 * 60)) + "分";
+    unit_time = "<br>分割する時間の単位:" + (selected_task.unit_time / (1000 * 60)) + "分";
   }
 
   let favorite;

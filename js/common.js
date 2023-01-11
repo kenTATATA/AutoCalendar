@@ -49,7 +49,7 @@ export function taskToArray(task) {
     a.title = task.name;
 
     a.number_of_imp_days = task.task_children.length;
-    a.unit_time = task.unit_time / (1000 * 60 * 60);
+    a.unit_time = task.unit_time / (1000 * 60);
 
     if (task.plan_or_task == 0) {
         a.plan_or_task = "Plan";
