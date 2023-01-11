@@ -55,7 +55,9 @@ if (docsnap.data() != null) {
       data[16],
       data[17]
     );
-    all_tasks.push(task);
+    if (task.valid == true) {
+      all_tasks.push(task);
+    }
     // console.log(docsnap.data()[Object.keys(docsnap.data())[i]]);
   }
 }
